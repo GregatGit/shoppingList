@@ -7,7 +7,13 @@ var shoppingList = {
             price: price,
             buy: true
         });
+        this.showList();
     },
+    removeItem: function (index){
+        this.items.splice(index, 1);
+        this.showList();
+    }
+    ,
     showList: function (){
         var toShow = [];
         var total = 0;
