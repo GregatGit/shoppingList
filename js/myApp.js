@@ -12,8 +12,11 @@ var shoppingList = {
     removeItem: function (index){
         this.items.splice(index, 1);
         this.showList();
-    }
-    ,
+    },
+    changePrice: function (index, newPrice){
+        this.items[index].price = newPrice;
+        this.showList();
+    },
     showList: function (){
         var toShow = [];
         var total = 0;
@@ -21,6 +24,7 @@ var shoppingList = {
             if (item.buy){
                 toShow.push(item.itemName);
                 total += item.price;
+                total = Math.round(total * 100) / 100;
             }
         });
         console.log(toShow, 'total: ', total);
