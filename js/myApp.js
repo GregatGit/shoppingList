@@ -40,6 +40,7 @@ var shoppingList = {
             }
         });
         console.log(toShow, 'total: ', total);
+        view.displayItems();
     }
 };
 
@@ -49,6 +50,7 @@ var handlers = {
         //var categorys = Object.keys(catalogue);
         //console.log(categorys);
         shoppingList.loadList(catalogue);
+
     } 
 };
 
