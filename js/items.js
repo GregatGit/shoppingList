@@ -10,7 +10,7 @@ var catalogue = {
                 category: ['produce']
             },
             {
-                itemName: 'oraanges',
+                itemName: 'oranges',
                 price: 2.99,
                 buy: true,
                 category: ['produce']

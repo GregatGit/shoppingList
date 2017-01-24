@@ -53,6 +53,15 @@ var handlers = {
 };
 
 var view = {
-
+    displayItems: function() {
+        var itemsUl = document.querySelector('#list');
+        itemsUl.innerHTML = '';
+        shoppingList.items.forEach(function(item, position){
+            var itemLi = document.createElement('li');
+            itemLi.id = position;
+            itemLi.textContent = item.itemName;
+            itemsUl.appendChild(itemLi);
+        });
+    }
 };
 
