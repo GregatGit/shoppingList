@@ -1,12 +1,23 @@
 
 var shoppingList = {
     items: [],
-    addItem: function (itemName, price){
+    addItemManual: function (itemName, price){
         this.items.push({
             itemName: itemName,
             price: price,
             buy: true,
             category: []
+        });
+        this.showList();
+    },
+    loadList: function(list){
+        console.log('list ',list);
+        var categorys = Object.keys(catalogue);
+        //debugger;
+        categorys.forEach(function(category){
+            catalogue[category].items.forEach(function(item){
+                shoppingList.items.push(item);
+            });
         });
         this.showList();
     },
@@ -32,8 +43,13 @@ var shoppingList = {
     }
 };
 
-var handler = {
-
+var handlers = {
+    loadList: function(){
+        console.log('catalogue ', catalogue);
+        //var categorys = Object.keys(catalogue);
+        //console.log(categorys);
+        shoppingList.loadList(catalogue);
+    } 
 };
 
 var view = {

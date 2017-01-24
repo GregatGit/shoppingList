@@ -1,4 +1,4 @@
-console.log(catalogue);
+//console.log(catalogue);
 
 var catalogue = {
     produce: {
