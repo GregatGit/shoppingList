@@ -5,7 +5,8 @@ var shoppingList = {
         this.items.push({
             itemName: itemName,
             price: price,
-            buy: true
+            buy: true,
+            category: []
         });
         this.showList();
     },
@@ -24,7 +25,7 @@ var shoppingList = {
             if (item.buy){
                 toShow.push(item.itemName);
                 total += item.price;
-                total = Math.round(total * 100) / 100;
+                total = Math.round(total * 100) / 100; // make sure rounds properly
             }
         });
         console.log(toShow, 'total: ', total);
@@ -38,3 +39,4 @@ var handler = {
 var view = {
 
 };
+
