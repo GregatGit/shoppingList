@@ -62,8 +62,14 @@ var view = {
             var itemLi = document.createElement('li');
             itemLi.id = position;
             itemLi.textContent = item.itemName;
+            itemLi.appendChild(this.addTickBox());
             itemsUl.appendChild(itemLi);
-        });
+        }, this);
+    },
+    addTickBox : function () {
+        var tickBox = document.createElement("INPUT");
+        tickBox.setAttribute('type', 'checkbox');
+        return tickBox;
     }
 };
 
