@@ -1,6 +1,6 @@
 
 var shoppingList = {
-    shops: ['Adli', 'Coles', 'Fruit_Market', 'other' ],
+    shops: ['Aldi', 'Coles', 'Fruit_Market', 'other' ],
     items: [],
     loadList: function(list){
         console.log('list ',list);
@@ -44,12 +44,26 @@ var view = {
     displayItems: function() {
         var itemsUl = document.querySelector('#list');
         itemsUl.innerHTML = '';
+
+        var myList = document.querySelector('.myList');
+        shoppingList.shops.forEach(function(shop){
+            var shopUl = document.createElement('ul');
+            //debugger;
+            shopUl.id = shop;
+            shopUl.textContent = shop;
+            myList.appendChild(shopUl);
+        });
+
         shoppingList.items.forEach(function(item, position){
             var itemLi = document.createElement('li');
             itemLi.id = position;
             itemLi.textContent = item.itemName;
             itemLi.appendChild(this.addTickBox());
             itemsUl.appendChild(itemLi);
+            debugger;
+            var selector = '#' + item.store;
+            var temp = document.querySelector(selector);
+            temp.appendChild(itemLi);
         }, this);
     },
     addTickBox : function () {
