@@ -52,14 +52,14 @@ var view = {
         shoppingList.shops.forEach(function(shop){
             var shopUl = document.createElement('ul');
             shopUl.id = shop;
-            shopUl.textContent = shop;
+            shopUl.textContent = shop.replace(/_/g, ' ');
             myList.appendChild(shopUl);
         });
 
         shoppingList.items.forEach(function(item, position){
             var itemLi = document.createElement('li');
             itemLi.id = position;
-            itemLi.textContent = item.itemName;
+            itemLi.textContent = item.itemName.replace(/_/g, ' ');
             itemLi.appendChild(this.addTickBox());
             var listUl = document.querySelector('#' + item.store);
             listUl.appendChild(itemLi);
