@@ -1,0 +1,11 @@
+.myList h2 {
+    text-decoration: underline;
+    
+}
+
+.myList ul li {
+    text-decoration: none;
+    font-size: 2rem;
+
+}
+

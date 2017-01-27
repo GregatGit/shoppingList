@@ -50,9 +50,11 @@ var view = {
         var myList = document.querySelector('.myList');
         myList.innerHTML = '';
         shoppingList.shops.forEach(function(shop){
+            var listHeader = document.createElement('h2');
+            listHeader.textContent = shop.replace(/_/g, ' ');
+            myList.appendChild(listHeader);
             var shopUl = document.createElement('ul');
             shopUl.id = shop;
-            shopUl.textContent = shop.replace(/_/g, ' ');
             myList.appendChild(shopUl);
         });
 
