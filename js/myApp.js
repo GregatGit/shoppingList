@@ -2,14 +2,19 @@
 var shoppingList = {
     shops: ['Aldi', 'Coles', 'Fruit_Market', 'other' ],
     items: [],
+    listLoaded: false,
     loadList: function(list){
         console.log('list ',list);
-        var categorys = Object.keys(catalogue);
-        categorys.forEach(function(category){
-            catalogue[category].items.forEach(function(item){
+
+        if (!this.listLoaded){
+            var categorys = Object.keys(catalogue);
+            categorys.forEach(function(category){
+                catalogue[category].items.forEach(function(item){
                 shoppingList.items.push(item);
+                });
             });
-        });
+            this.listLoaded = true;
+        }
         this.showList();
     },
     removeItem: function (index){
@@ -42,13 +47,10 @@ var handlers = {
 
 var view = {
     displayItems: function() {
-        var itemsUl = document.querySelector('#list');
-        itemsUl.innerHTML = '';
-
         var myList = document.querySelector('.myList');
+        myList.innerHTML = '';
         shoppingList.shops.forEach(function(shop){
             var shopUl = document.createElement('ul');
-            //debugger;
             shopUl.id = shop;
             shopUl.textContent = shop;
             myList.appendChild(shopUl);
@@ -59,11 +61,8 @@ var view = {
             itemLi.id = position;
             itemLi.textContent = item.itemName;
             itemLi.appendChild(this.addTickBox());
-            itemsUl.appendChild(itemLi);
-            debugger;
-            var selector = '#' + item.store;
-            var temp = document.querySelector(selector);
-            temp.appendChild(itemLi);
+            var listUl = document.querySelector('#' + item.store);
+            listUl.appendChild(itemLi);
         }, this);
     },
     addTickBox : function () {
