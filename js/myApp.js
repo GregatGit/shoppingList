@@ -57,7 +57,7 @@ var view = {
             shopUl.id = shop;
             myList.appendChild(shopUl);
         });
-
+        this.setUpEventListeners();
         shoppingList.items.forEach(function(item, position){
             var itemLi = document.createElement('li');
             itemLi.id = position;
@@ -66,11 +66,23 @@ var view = {
             var listUl = document.querySelector('#' + item.store);
             listUl.appendChild(itemLi);
         }, this);
+        
     },
     addTickBox : function () {
         var tickBox = document.createElement("INPUT");
         tickBox.setAttribute('type', 'checkbox');
         return tickBox;
+    },
+    setUpEventListeners: function() {
+        var storeId = document.querySelector('.myList');
+        storeId.addEventListener('click', function(event){
+            var target = event.target;
+            //debugger;
+            if(target.tagName === 'H2'){
+                console.log(target);
+            }
+            
+        });
     }
 };
 
