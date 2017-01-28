@@ -77,9 +77,26 @@ var view = {
         var storeId = document.querySelector('.myList');
         storeId.addEventListener('click', function(event){
             var target = event.target;
-            //debugger;
             if(target.tagName === 'H2'){
-                console.log(target);
+                var myList = document.querySelector('.myList');
+                myList.innerHTML = '';
+                var listHeader = document.createElement('h3');
+                listHeader.textContent = target.innerHTML;
+                myList.appendChild(listHeader);
+                var shopUl = document.createElement('ul');
+                var myTargetName = target.innerHTML.replace(/ /g, '_');
+                shopUl.id = myTargetName;
+                myList.appendChild(shopUl);
+                shoppingList.items.forEach(function(item, position){
+                    if (item.store === myTargetName){
+                        var itemLi = document.createElement('li');
+                        itemLi.id = position;
+                        itemLi.textContent = item.itemName.replace(/_/g, ' ');
+                        itemLi.appendChild(view.addTickBox());
+                        var listUl = document.querySelector('#' + item.store);
+                        listUl.appendChild(itemLi);
+                    }
+                });
             }
             
         });
