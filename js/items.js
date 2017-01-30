@@ -4,6 +4,11 @@
  catalogue structure will have to change
 */
 
+var catalogue1 = [
+    ['apples', 'produce','Fruit_Market'],
+    ['oranges', 'produce', 'Fruit_Market']
+];
+
 var catalogue = {
     produce: {
         items: [
