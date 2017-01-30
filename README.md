@@ -1,6 +1,6 @@
 # My Shopping list
 
-An app that lets you build and use a shopping list that is easy to ues.
+An app that lets you build and use a shopping list that is easy to use.
 
 
 ## Features
@@ -12,4 +12,12 @@ An app that lets you build and use a shopping list that is easy to ues.
  > txt list
  > keep list for next time
 
- 
+
+
+## Project status
+
+This is a work in progress 
+
+## Acknowledgments
+
+I am building this from scratch but have used the technics from www.watchandcode.com to build the JavaScript.
