@@ -1,5 +1,8 @@
 //console.log(catalogue);
 
+/* a function that takes and arr loads it into the catelog
+ catalogue structure will have to change
+*/
 
 var catalogue = {
     produce: {
