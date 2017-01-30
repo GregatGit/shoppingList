@@ -4,8 +4,6 @@ var shoppingList = {
     items: [],
     listLoaded: false,
     loadList: function(list){
-        console.log('list ',list);
-
         if (!this.listLoaded){
             var categorys = Object.keys(catalogue);
             categorys.forEach(function(category){
@@ -41,7 +39,6 @@ var handlers = {
     loadList: function(){
         console.log('catalogue ', catalogue);
         shoppingList.loadList(catalogue);
-
     } 
 };
 
@@ -97,8 +94,7 @@ var view = {
                         listUl.appendChild(itemLi);
                     }
                 });
-            }
-            
+            }         
         });
     }
 };
@@ -110,7 +106,7 @@ var view = {
             itemName: itemName,
             price: price,
             buy: true,
-            category: []
+            category: ''
         });
         this.showList();
     },
