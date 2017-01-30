@@ -6,5 +6,6 @@ var myArr = ['milk', 'fresh', 'Coles' ];
 function MakeItem (arr){
     this.itemName = arr[0];
     this.category = arr[1];
-    this.store = arr[2] || 'other';
+    this.store = arr[2];
+    this.notes = arr[3] || 'none';
 }
