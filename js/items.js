@@ -5,10 +5,10 @@
 */
 
 var catalogue1 = [
-    ['apples', 'produce','Fruit_Market'],
-    ['oranges', 'produce', 'Fruit_Market'],
+    ['apples', 'produce','Fruit_Market', true],
+    ['oranges', 'produce', 'Fruit_Market', true],
     ['tomatoes', 'produce', 'Fruit_Market'],
-    ['milk', 'fresh', 'Coles'],
+    ['milk', 'fresh', 'Coles', true],
     ['cheese', 'fresh', 'Aldi'],
     ['chicken_legs', 'fresh', 'Aldi'],
     ['rye_bread', 'fresh', 'Coles'],

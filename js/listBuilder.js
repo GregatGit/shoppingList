@@ -7,7 +7,8 @@ function MakeItem (arr){
     this.store = arr[2];
     this.onTheList = arr[3] || false;
     this.notes = arr[4] || 'none';
-    this.code = getInitals(arr);
+    this.bought = false;
+    //this.code = getInitals(arr);
 }
 
 function getInitals(arr){
