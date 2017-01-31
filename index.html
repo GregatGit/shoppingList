@@ -22,6 +22,36 @@
             <h3>Choose your items</h3>
             <ul id="listToChooseFrom"></ul>
         </section>
+        <section id="addNewItems">
+            <h3>ADD NEW ITEMS</h3>
+            <div>
+                Item name: 
+                <input type="text" id="newItemName" maxlength="15">
+            </div>
+            <div>
+                Store or Market
+                <select id="storeName">
+                    <option value="Aldi">Aldi</option>
+                    <option value="Coles">Coles</option>
+                    <option value="Fruit_Market">Fruit Market</option>
+                    <option value="other">other</option>
+                </select>
+            </div>
+            
+            <div>
+                Item Category
+                <select id="categoryType">
+                    <option value="produce">produce </option>
+                    <option value="fresh">fresh </option>
+                    <option value="canned">canned </option>
+                    <option value="cleaning">cleaning </option>
+                </select>
+            </div>
+            <div>
+                Add to choices
+                <button onclick="handlers.addNewItem()">Press</button>
+            </div>
+        </section>
         <h3>Shopping List</h3>
         <section id='list'>
             <button onclick="handlers.loadIntoItems()">Show All</button>

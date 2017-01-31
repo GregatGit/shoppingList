@@ -8,23 +8,7 @@ function MakeItem (arr){
     this.onTheList = arr[3] || false;
     this.notes = arr[4] || 'none';
     this.bought = false;
-    //this.code = getInitals(arr);
 }
-
-function getInitals(arr){
-  var result = [];
-  arr.forEach(function(str, position){
-    str = str.split('');
-    result.push(str[0]);
-    if (position === 0){
-      result.push(str[1]);
-      result.push(str[2]);
-    }
-  });
-  return result.join('');
-}
-
-
 
 /*
 var catalogue1 = [

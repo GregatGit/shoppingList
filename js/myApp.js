@@ -5,6 +5,8 @@ var shoppingList = {
     items: [],
     listLoaded: false,
     loadCatalogueItems: function() {
+        // make sure catalogueItems is empty
+        this.catalogueItems.length = 0;
         catalogue1.forEach(function(item){
             var newItem = new MakeItem(item);
             shoppingList.catalogueItems.push(newItem);
@@ -23,25 +25,14 @@ var shoppingList = {
             });
             this.listLoaded = true;
         }
-        this.showList();
+        view.displayItemChoices();
     },
-    removeItem: function (index){
-        this.items.splice(index, 1);
-        this.showList();
-    },
-    changePrice: function (index, newPrice){
-        this.items[index].price = newPrice;
-        this.showList();
-    },
-    showList: function (){
-        var total = 0;
-        this.items.forEach(function (item) {
-            if (item.buy){
-                total += item.price;
-                total = Math.round(total * 100) / 100; // make sure rounds properly
-            }
-        });
-        view.displayItems();
+    addNewItem: function(arr){
+        console.log(arr);
+        //var newItem = new MakeItem(arr);
+        catalogue1.push(arr);
+        this.loadCatalogueItems();
+
     }
 };
 
@@ -57,6 +48,14 @@ var handlers = {
     loadIntoItems: function() {
         console.log('hi');
         view.displayItems2();
+    },
+    addNewItem: function() {
+        var name = document.getElementById('newItemName').value;
+        var category = document.getElementById("categoryType");
+        var store = document.getElementById("storeName");
+        debugger;
+        shoppingList.addNewItem([name, category.value, store.value, true]);
+        view.displayItemChoices();
     }
 };
 
@@ -175,4 +174,23 @@ show the shopping list built
         }, this);
         
     },
+    ,
+    removeItem: function (index){
+        this.items.splice(index, 1);
+        this.showList();
+    },
+    changePrice: function (index, newPrice){
+        this.items[index].price = newPrice;
+        this.showList();
+    },
+    showList: function (){
+        var total = 0;
+        this.items.forEach(function (item) {
+            if (item.buy){
+                total += item.price;
+                total = Math.round(total * 100) / 100; // make sure rounds properly
+            }
+        });
+        view.displayItems();
+    }
 */
