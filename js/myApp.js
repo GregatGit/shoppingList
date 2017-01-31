@@ -1,8 +1,15 @@
 
 var shoppingList = {
     shops: ['Aldi', 'Coles', 'Fruit_Market', 'other' ],
+    catalogueItems: [],
     items: [],
     listLoaded: false,
+    loadCatalogueItems: function() {
+        catalogue1.forEach(function(item){
+            var newItem = new MakeItem(item);
+            shoppingList.catalogueItems.push(newItem);
+        });
+    },
     loadList: function(list){
         if (!this.listLoaded){
             var categorys = Object.keys(catalogue);
@@ -39,10 +46,28 @@ var handlers = {
     loadList: function(){
         console.log('catalogue ', catalogue);
         shoppingList.loadList(catalogue);
-    } 
+    },
+    boxIsChecked(obj){
+        //debugger;
+        console.log(obj.parentElement.id);
+    }
 };
 
 var view = {
+    // display all items in the catalogue
+    displayItemChoices: function (){
+        shoppingList.loadCatalogueItems();
+        var listOfItemToChooseFrom = document.querySelector('#listToChooseFrom');
+        listOfItemToChooseFrom.innerHTML = '';
+        shoppingList.catalogueItems.forEach(function (item, position){
+            let itemLi = document.createElement('li');
+            itemLi.textContent = item.itemName;
+            itemLi.id = item.code;
+            itemLi.appendChild(this.addTickBox());
+            listOfItemToChooseFrom.appendChild(itemLi);
+        }, this);
+    },
+    // show the shopping list built
     displayItems: function() {
         var myList = document.querySelector('.myList');
         myList.innerHTML = '';
@@ -68,6 +93,7 @@ var view = {
     addTickBox : function () {
         var tickBox = document.createElement("INPUT");
         tickBox.setAttribute('type', 'checkbox');
+        tickBox.setAttribute('onchange', 'handlers.boxIsChecked(this)');
         return tickBox;
     },
     setUpEventListeners: function() {
@@ -98,8 +124,7 @@ var view = {
         });
     }
 };
-
-
+view.displayItemChoices();
 /* 
     addItemManual: function (itemName, price){
         this.items.push({
