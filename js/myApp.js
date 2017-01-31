@@ -2,7 +2,6 @@
 var shoppingList = {
     shops: ['Aldi', 'Coles', 'Fruit_Market', 'other' ],
     catalogueItems: [],
-    items: [],
     listLoaded: false,
     loadCatalogueItems: function() {
         // make sure catalogueItems is empty
@@ -28,8 +27,6 @@ var shoppingList = {
         view.displayItemChoices();
     },
     addNewItem: function(arr){
-        console.log(arr);
-        //var newItem = new MakeItem(arr);
         catalogue1.push(arr);
         this.loadCatalogueItems();
 
@@ -50,11 +47,11 @@ var handlers = {
         view.displayItems2();
     },
     addNewItem: function() {
-        var name = document.getElementById('newItemName').value;
+        var name = document.getElementById('newItemName');
         var category = document.getElementById("categoryType");
         var store = document.getElementById("storeName");
-        debugger;
-        shoppingList.addNewItem([name, category.value, store.value, true]);
+        shoppingList.addNewItem([name.value, category.value, store.value, true]);
+        name.value = '';
         view.displayItemChoices();
     }
 };
@@ -79,9 +76,11 @@ var view = {
         listOfItemToChooseFrom.appendChild(loadButton);
     
     },
+    // this is to display the shopping list build by user
     displayItems2: function () {
         var myList = document.querySelector('.myList');
         myList.innerHTML = '';
+        // first the different shops
         shoppingList.shops.forEach(function(shop){
             var listHeader = document.createElement('h2');
             listHeader.textContent = shop.replace(/_/g, ' ');
@@ -91,6 +90,7 @@ var view = {
             myList.appendChild(shopUl);
         });
         this.setUpEventListeners();
+        // the individual items to go under the different categories
          shoppingList.catalogueItems.forEach(function(item, position){
             if (item.onTheList){
                 var itemLi = document.createElement('li');
