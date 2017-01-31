@@ -29,7 +29,6 @@ var shoppingList = {
     addNewItem: function(arr){
         catalogue1.push(arr);
         this.loadCatalogueItems();
-
     }
 };
 
@@ -73,8 +72,7 @@ var view = {
         var loadButton = document.createElement('button');
         loadButton.innerText = "Click here when done";
         loadButton.setAttribute('onclick', 'handlers.loadIntoItems()');
-        listOfItemToChooseFrom.appendChild(loadButton);
-    
+        listOfItemToChooseFrom.appendChild(loadButton); 
     },
     // this is to display the shopping list build by user
     displayItems2: function () {
@@ -140,57 +138,3 @@ var view = {
     }
 };
 view.displayItemChoices();
-/* 
-    addItemManual: function (itemName, price){
-        this.items.push({
-            itemName: itemName,
-            price: price,
-            buy: true,
-            category: ''
-        });
-        this.showList();
-    },
-
-show the shopping list built
-    displayItems: function() {
-        var myList = document.querySelector('.myList');
-        myList.innerHTML = '';
-        shoppingList.shops.forEach(function(shop){
-            var listHeader = document.createElement('h2');
-            listHeader.textContent = shop.replace(/_/g, ' ');
-            myList.appendChild(listHeader);
-            var shopUl = document.createElement('ul');
-            shopUl.id = shop;
-            myList.appendChild(shopUl);
-        });
-        this.setUpEventListeners();
-        shoppingList.items.forEach(function(item, position){
-            var itemLi = document.createElement('li');
-            itemLi.id = position;
-            itemLi.textContent = item.itemName.replace(/_/g, ' ');
-            itemLi.appendChild(this.addTickBox());
-            var listUl = document.querySelector('#' + item.store);
-            listUl.appendChild(itemLi);
-        }, this);
-        
-    },
-    ,
-    removeItem: function (index){
-        this.items.splice(index, 1);
-        this.showList();
-    },
-    changePrice: function (index, newPrice){
-        this.items[index].price = newPrice;
-        this.showList();
-    },
-    showList: function (){
-        var total = 0;
-        this.items.forEach(function (item) {
-            if (item.buy){
-                total += item.price;
-                total = Math.round(total * 100) / 100; // make sure rounds properly
-            }
-        });
-        view.displayItems();
-    }
-*/
