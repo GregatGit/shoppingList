@@ -5,7 +5,8 @@ function MakeItem (arr){
     this.itemName = arr[0];
     this.category = arr[1];
     this.store = arr[2];
-    this.notes = arr[3] || 'none';
+    this.onTheList = arr[3] || false;
+    this.notes = arr[4] || 'none';
     this.code = getInitals(arr);
 }
 

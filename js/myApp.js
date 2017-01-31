@@ -10,6 +10,9 @@ var shoppingList = {
             shoppingList.catalogueItems.push(newItem);
         });
     },
+    toggleCatalogueItemsOnTheListProperty: function (place){
+        this.catalogueItems[place].onTheList = !this.catalogueItems[place].onTheList;
+    },
     loadList: function(list){
         if (!this.listLoaded){
             var categorys = Object.keys(catalogue);
@@ -48,8 +51,8 @@ var handlers = {
         shoppingList.loadList(catalogue);
     },
     boxIsChecked(obj){
-        //debugger;
-        console.log(obj.parentElement.id);
+         var id = obj.parentElement.id;
+         shoppingList.toggleCatalogueItemsOnTheListProperty(id);
     }
 };
 
@@ -62,10 +65,11 @@ var view = {
         shoppingList.catalogueItems.forEach(function (item, position){
             let itemLi = document.createElement('li');
             itemLi.textContent = item.itemName;
-            itemLi.id = item.code;
+            itemLi.id = position;
             itemLi.appendChild(this.addTickBox());
             listOfItemToChooseFrom.appendChild(itemLi);
         }, this);
+    
     },
     // show the shopping list built
     displayItems: function() {
