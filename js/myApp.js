@@ -3,6 +3,7 @@ var shoppingList = {
     shops: ['Aldi', 'Coles', 'Fruit_Market', 'other' ],
     catalogueItems: [],
     listLoaded: false,
+    allOnList: false,
     loadCatalogueItems: function() {
         // make sure catalogueItems is empty
         this.catalogueItems.length = 0;
@@ -29,6 +30,13 @@ var shoppingList = {
     addNewItem: function(arr){
         catalogue1.push(arr);
         this.loadCatalogueItems();
+    },
+    toggleAll: function(){
+        this.allOnList = !this.allOnList;
+        this.catalogueItems.forEach(function(item){
+            item.onTheList = this.allOnList;
+        }, this);
+        view.displayItemChoices(false);
     }
 };
 
@@ -51,14 +59,18 @@ var handlers = {
         var store = document.getElementById("storeName");
         shoppingList.addNewItem([name.value, category.value, store.value, true]);
         name.value = '';
-        view.displayItemChoices();
+        view.displayItemChoices(true);
+    },
+    toggleAll: function() {
+        shoppingList.toggleAll();
     }
 };
 
 var view = {
     // display all items in the catalogue
-    displayItemChoices: function (){
-        shoppingList.loadCatalogueItems();
+    displayItemChoices: function (listLoadRequired){
+        if (listLoadRequired)
+            {shoppingList.loadCatalogueItems();}
         var listOfItemToChooseFrom = document.querySelector('#listToChooseFrom');
         listOfItemToChooseFrom.innerHTML = '';
         shoppingList.catalogueItems.forEach(function (item, position){
@@ -137,4 +149,4 @@ var view = {
         });
     }
 };
-view.displayItemChoices();
+view.displayItemChoices(true);
