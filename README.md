@@ -22,6 +22,8 @@ An app that lets you build and use a shopping list that is easy to use.
 *The JavaScript is underway with lists being created and loaded into very plain html.
 *Once the js is working well the css will made to be responisve and easy to both look at and use
 
+* it can be viewed at https://gregatgit.github.io/shoppingList/
+
 ## Acknowledgments
 
-I am building this from scratch but have used the technics from www.watchandcode.com to build the JavaScript.
+I am building this from scratch but have used the  techniques from www.watchandcode.com to build the JavaScript.
