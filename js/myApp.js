@@ -71,16 +71,17 @@ var view = {
     displayItemChoices: function (listLoadRequired){
         if (listLoadRequired)
             {shoppingList.loadCatalogueItems();}
-        var listOfItemToChooseFrom = document.querySelector('#listToChooseFrom');
-        listOfItemToChooseFrom.innerHTML = '';
-        shoppingList.catalogueItems.forEach(function (item, position){
-            let itemLi = document.createElement('li');
-            itemLi.textContent = item.itemName;
-            itemLi.id = position;
-            var checked = item.onTheList;
-            itemLi.appendChild(this.addTickBox(checked));
-            listOfItemToChooseFrom.appendChild(itemLi);
-        }, this);
+        var listOfItemToChooseFrom = this.buildList('#listToChooseFrom', shoppingList.catalogueItems);
+        // var listOfItemToChooseFrom = document.querySelector('#listToChooseFrom');
+        // listOfItemToChooseFrom.innerHTML = '';
+        // shoppingList.catalogueItems.forEach(function (item, position){
+        //     let itemLi = document.createElement('li');
+        //     itemLi.textContent = item.itemName;
+        //     itemLi.id = position;
+        //     var checked = item.onTheList;
+        //     itemLi.appendChild(this.addTickBox(checked));
+        //     listOfItemToChooseFrom.appendChild(itemLi);
+        // }, this);
         var loadButton = document.createElement('button');
         loadButton.innerText = "Click here when done";
         loadButton.setAttribute('onclick', 'handlers.loadIntoItems()');
@@ -147,6 +148,19 @@ var view = {
                 });
             }         
         });
+    },
+    buildList: function(htmlId, list){
+        var myQuerySelector = document.querySelector(htmlId);
+        myQuerySelector.innerHTML = '';
+        list.forEach(function (item, position){
+            let itemLi = document.createElement('li');
+            itemLi.textContent = item.itemName;
+            itemLi.id = position;
+            var checked = item.onTheList;
+            itemLi.appendChild(this.addTickBox(checked));
+            myQuerySelector.appendChild(itemLi);
+        }, this);
+        return myQuerySelector;
     }
 };
 view.displayItemChoices(true);
